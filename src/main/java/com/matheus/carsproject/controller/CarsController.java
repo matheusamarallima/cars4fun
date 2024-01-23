@@ -1,13 +1,10 @@
 package com.matheus.carsproject.controller;
 
 import com.matheus.carsproject.model.Car;
-import com.matheus.carsproject.repository.CarRepository;
-import com.matheus.carsproject.repository.FabricanteRepository;
+import com.matheus.carsproject.service.CarsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,16 +13,17 @@ import java.util.List;
 public class CarsController {
 
     @Autowired
-    private CarRepository carRepository;
-
-    @Autowired
-    private FabricanteRepository fabricanteRepository;
+    private CarsService carsService;
 
 
     @GetMapping("/allcars")
-    private ResponseEntity allCars(){
-        List<Car> carList = carRepository.findAll();
-        return ResponseEntity.ok(carList);
+    private ResponseEntity<List<Car>> allCars(){
+        return ResponseEntity.ok(carsService.getAllCars());
+    }
+
+    @GetMapping("modelo/{modelo}")
+    private ResponseEntity<List<Car>> getByModelo(@PathVariable String modelo){
+        return ResponseEntity.ok(carsService.getAllCarsByName(modelo));
     }
 
 

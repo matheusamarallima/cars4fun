@@ -1,10 +1,10 @@
 package com.matheus.carsproject.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +15,8 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "fabricante_id")
+    @JsonBackReference
+    /*@JsonBackReference é ignorada durante a serialização para evitar o loop.*/
     private Fabricante fabricante;
     private String modelo;
     private Date ano;
