@@ -1,8 +1,6 @@
 package com.matheus.carsproject.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -10,11 +8,14 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
+@Entity
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
     private String modelo;
     private Date ano;
