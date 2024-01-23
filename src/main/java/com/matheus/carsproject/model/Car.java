@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -20,7 +21,7 @@ public class Car {
     private Fabricante fabricante;
     private String modelo;
     private Date ano;
-    private String preco;
+    private BigDecimal preco;
     private Boolean usado;
 
 

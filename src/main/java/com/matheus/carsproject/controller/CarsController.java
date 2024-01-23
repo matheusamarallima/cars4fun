@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -26,5 +27,14 @@ public class CarsController {
         return ResponseEntity.ok(carsService.getAllCarsByName(modelo));
     }
 
+    @GetMapping("/price/start/{price}")
+    private ResponseEntity<List<Car>> getPriceStart(@PathVariable BigDecimal price){
+        return ResponseEntity.ok(carsService.getByStartingPrice(price));
+    }
+
+    @GetMapping("/price/less/{price}")
+    private ResponseEntity<List<Car>> getPriceLess(@PathVariable BigDecimal price){
+        return ResponseEntity.ok(carsService.getByPriceLess(price));
+    }
 
 }
