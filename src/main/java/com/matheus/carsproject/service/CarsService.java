@@ -19,8 +19,10 @@ public class CarsService {
         return carRepository.findAll();
     }
 
-    public List<Car> getAllCarsByName(String modelo){
-        return carRepository.findByModelo(modelo);
+    public List<Car> getAllCarsByModelo(String modelo){
+        List<Car> carros = carRepository.findByModelo(modelo);
+        System.out.println(carros);
+        return carros;
     }
 
     public List<Car> getByStartingPrice(BigDecimal price) {

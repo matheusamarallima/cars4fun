@@ -15,7 +15,8 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fabricante_id")
     @JsonBackReference
     /*@JsonBackReference é ignorada durante a serialização para evitar o loop.*/
     private Fabricante fabricante;

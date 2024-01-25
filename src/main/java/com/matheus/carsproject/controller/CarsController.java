@@ -24,7 +24,7 @@ public class CarsController {
 
     @GetMapping("modelo/{modelo}")
     private ResponseEntity<List<Car>> getByModelo(@PathVariable String modelo){
-        return ResponseEntity.ok(carsService.getAllCarsByName(modelo));
+        return ResponseEntity.ok(carsService.getAllCarsByModelo(modelo));
     }
 
     @GetMapping("/price/start/{price}")
